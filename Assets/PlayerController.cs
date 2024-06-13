@@ -33,12 +33,15 @@ public class PlayerController : MonoBehaviour
         jump = 1;
     }
 
-    // Update is called once per frame
-    void Update()
+    
+    void FixedUpdate()
     {
         sceneCamera.transform.LookAt(gameObject.transform);
         sceneCamera.transform.position = new Vector3(sceneCamera.transform.position.x, sceneCamera.transform.position.y, gameObject.transform.position.z - 4);
+    }
 
+    void Update()
+    {
         float xVel = Input.GetAxis("Horizontal");
         float zVel = Input.GetAxis("Vertical");
 
@@ -47,6 +50,6 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(new Vector3(0, jumpForce, 0));
             jump = 1;
         }
-        rb.velocity = new Vector3(xVel, rb.velocity.y, zVel) * speed;
+        rb.velocity = new Vector3(xVel * speed, rb.velocity.y, zVel * speed);
     }
 }
