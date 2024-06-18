@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public int speed = 1;
     public float jumpForce = 150f;
     int jump = 0;
+    int cameraZOffset = 8;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +38,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         sceneCamera.transform.LookAt(gameObject.transform);
-        sceneCamera.transform.position = new Vector3(sceneCamera.transform.position.x, sceneCamera.transform.position.y, gameObject.transform.position.z - 4);
+        sceneCamera.transform.position = new Vector3(sceneCamera.transform.position.x, sceneCamera.transform.position.y, gameObject.transform.position.z - cameraZOffset);
     }
 
     void Update()
